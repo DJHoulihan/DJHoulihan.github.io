@@ -1,5 +1,4 @@
 ---
-layout: home
 title: Dennis Houlihan
 feature_text: |
   ## Dennis Houlihan
