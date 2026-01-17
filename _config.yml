@@ -93,10 +93,10 @@ encoding: utf-8 # Make sure the encoding is right
 lang: en-GB # Set the site language
 title: "Dennis Houlihan" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/logos/logo.svg" # Site logo, also used in jekyll-seo-tag
-description: "Alembic is a starting point for Jekyll projects. Rather than starting from scratch, this boilerplate is designed to get the ball rolling immediately" # Site description and default description, also used in jekyll-seo-tag
-url: "https://alembic.darn.es" # Site url, also used in jekyll-seo-tag
+description: "Hello, welcome to my website!" # Site description and default description, also used in jekyll-seo-tag
+url: "https://djhoulihan.github.io" # Site url, also used in jekyll-seo-tag
 baseurl: ""
-repo: "https://github.com/djhoulihan/djhouliha.github.io"
+repo: "https://github.com/djhoulihan/djhoulihan.github.io"
 email: "dennishoulihan12@gmail.com"
 # disqus: "alembic-1" # Blog post comments, uncomment the option and set the site ID from your Disqus account
 # date_format: "%-d %B %Y" # Blog post date formatting using placeholder formatting
@@ -137,9 +137,9 @@ navigation_footer:
   url: https://darn.es
 
 social_links: # Appears in sidebar. Set the urls then uncomment and comment out as desired
-  Twitter: https://twitter.com/DavidDarnes
-  LinkedIn: https://www.linkedin.com/in/daviddarnes
-  GitHub: https://github.com/daviddarnes
+  # Twitter: https://twitter.com/DavidDarnes
+  LinkedIn: https://www.linkedin.com/in/dhoulihan12
+  GitHub: https://github.com/djhoulihan
   link: https://darn.es
   RSS: /feed.xml
 
