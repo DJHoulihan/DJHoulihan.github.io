@@ -6,7 +6,7 @@ excerpt: null
 ---
 <!-- Header stays unchanged -->
 
-# Your Site Title
+<!-- # Your Site Title -->
 
 <!-- Bio section: picture on the left, name + description centered to the right -->
 
