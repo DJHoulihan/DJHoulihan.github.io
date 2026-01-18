@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Dennis Houlihan
 feature_text: |
   ## Dennis Houlihan
