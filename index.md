@@ -15,7 +15,7 @@ excerpt: null
 <div style="display:flex; align-items:center; gap:2rem; margin-top:2rem;">
   <!-- Bio picture (replace with your own image path) -->
   <div style="flex:0 0 auto; width:160px; height:160px; border-radius:9999px; overflow:hidden;">
-    <img src="/images/bio.jpg" alt="Bio picture" style="width:100%; height:100%; object-fit:cover;" />
+    <img src="assets/images/bio.jpg" alt="Bio picture" style="width:100%; height:100%; object-fit:cover;" />
   </div>
 
   <!-- Name + description centered vertically -->
