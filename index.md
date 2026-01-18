@@ -12,7 +12,7 @@ excerpt: null
 
 <div style="display:flex; align-items:left; gap:2rem; margin-top:2rem;">
   <!-- Bio picture (replace with your own image path) -->
-  <div style="flex:0 0 auto; width:320px; height:320px; border-radius:9999px; overflow:hidden;">
+  <div style="display:flex; justify-content:flex-start; align-items:center; gap:2rem; margin-top:2rem;">
     <img src="assets/images/bio-photo.jpg" alt="Bio picture" style="width:100%; height:100%; object-fit:cover;" />
   </div>
 
