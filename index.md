@@ -1,8 +1,6 @@
 ---
-title: Dennis Houlihan
-feature_text: |
-  ## Dennis Houlihan
-  Data Scientist with a physics background, working at the intersection of quantitative modeling, finance, and public-sector analytics.
+title: null
+feature_text: null
 feature_image: null
 excerpt: null
 ---
