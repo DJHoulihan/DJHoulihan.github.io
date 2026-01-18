@@ -19,13 +19,13 @@ excerpt: null
   <!-- Name + description centered vertically -->
   <div style="flex:1; text-align:center;">
     <h1 style="margin:0; font-size:2rem;">
-      Hello, I'm Dennis Houlihan. I am a 
-      <span style="color:#ff6600; font-family: 'Georgia', serif;">
-        recovering Nuclear Physicist
+      Hello, I'm Dennis Houlihan.
       </span>
     </h1>
     <p style="margin-top:0.5rem; font-size:1.1rem; line-height:1.5; max-width:40rem; margin-left:auto; margin-right:auto;">
-      I've spent years studying things that are infinitely small or infinitely away. Now, I'm focusing on things that are infinitely more practical, like your fund's performance.
+      I am a 
+      <span style="color:#ff6600; font-family: 'Georgia', serif;">
+        recovering Nuclear Physicist.
     </p>
   </div>
 </div>
