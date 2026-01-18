@@ -3,12 +3,33 @@ title: Dennis Houlihan
 feature_text: |
   ## Dennis Houlihan
   Data Scientist with a physics background, working at the intersection of quantitative modeling, finance, and public-sector analytics.
-feature_image: "https://picsum.photos/1300/400?image=989"
-excerpt: "Alembic is a starting point for [Jekyll](https://jekyllrb.com/) projects. Rather than starting from scratch, this boilerplate is designed to get the ball rolling immediately. Install it, configure it, tweak it, push it."
+feature_image: null
+excerpt: null
 ---
-Welcome to my personal website.
+<!-- Header stays unchanged -->
 
-Here you’ll find:
-- Projects in data science & finance
-- Writing on modeling and systems
-- Professional background and contact info
+# Your Site Title
+
+<!-- Bio section: picture on the left, name + description centered to the right -->
+
+<div style="display:flex; align-items:center; gap:2rem; margin-top:2rem;">
+  <!-- Bio picture (replace with your own image path) -->
+  <div style="flex:0 0 auto; width:160px; height:160px; border-radius:9999px; overflow:hidden;">
+    <img src="/images/bio.jpg" alt="Bio picture" style="width:100%; height:100%; object-fit:cover;" />
+  </div>
+
+  <!-- Name + description centered vertically -->
+  <div style="flex:1; text-align:center;">
+    <h1 style="margin:0; font-size:2rem;">Dennis Houlihan</h1>
+    <p style="margin-top:0.5rem; font-size:1.1rem; line-height:1.5; max-width:40rem; margin-left:auto; margin-right:auto;">
+      I’m a data scientist and nuclear physicist specializing in applied modeling, clustering, and scientific computation. I build production-ready analytics tools and explain complex results clearly.
+    </p>
+  </div>
+</div>
+
+<!-- Optional: add a call-to-action or links below -->
+
+<div style="margin-top:2rem; display:flex; justify-content:center; gap:1rem;">
+  <a href="#projects" style="padding:0.75rem 1.25rem; border-radius:9999px; border:1px solid; text-decoration:none;">Projects</a>
+  <a href="#contact" style="padding:0.75rem 1.25rem; border-radius:9999px; border:1px solid; text-decoration:none;">Contact</a>
+</div>
