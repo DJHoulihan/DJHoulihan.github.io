@@ -16,19 +16,21 @@ excerpt: null
     <img src="assets/images/bio-photo.jpg" alt="Bio picture" style="width:100%; height:100%; object-fit:cover;" />
   </div>
 
-  <!-- Name + description centered vertically -->
-  <div style="flex:1; text-align:center;">
-    <h1 style="margin:0; font-size:2rem;">
-      Dennis Houlihan
-    </h1>
-    <p style="margin-top:0.5rem; font-size:1.1rem; line-height:1.5; max-width:40rem; margin-left:auto; margin-right:auto;">
-      MSc, Physics
-      <span style="font-weight: bold;">
-        Data Scientist and Quant Enthusiast
-      </span>
-    </p>
+<!-- Name + description centered vertically -->
+<div style="flex:1; text-align:center;">
+  <h1 style="margin:0; font-size:2rem;">
+    Dennis Houlihan
+  </h1>
+
+  <div style="font-weight: bold; margin-top: 0.25rem;">
+    MSc, Physics
+  </div>
+
+  <div style="font-weight: bold; margin-top: 0.25rem;">
+    Data Scientist and Quant Enthusiast
   </div>
 </div>
+
 
 <!-- Optional: add a call-to-action or links below -->
 
