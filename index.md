@@ -19,22 +19,23 @@ excerpt: null
 <!-- Name + description centered vertically -->
 <div style="flex:1; text-align:center;">
   <h1 style="margin:0; font-size:2rem;">
-    Dennis Houlihan
+    Dennis Houlihan, MSc
   </h1>
-
   <div style="font-weight: bold; margin-top: 0.25rem;">
-    MSc, Physics
-  </div>
-
-  <div style="font-weight: bold; margin-top: 0.25rem;">
-    Data Scientist and Quant Enthusiast
+    Physicist, Data Scientist, and Quant Enthusiast
   </div>
 
 
-
-<!-- Optional: add a call-to-action or links below -->
 
 <div style="margin-top:2rem; display:flex; justify-content:center; gap:1rem;">
-  <a href="#projects" style="padding:0.75rem 1.25rem; border-radius:9999px; border:1px solid; text-decoration:none;">Projects</a>
-  <a href="#contact" style="padding:0.75rem 1.25rem; border-radius:9999px; border:1px solid; text-decoration:none;">Contact</a>
+  <a href="/projects/"
+     style="padding:0.75rem 1.25rem; border-radius:9999px; border:1px solid; text-decoration:none;">
+    Projects
+  </a>
+
+  <a href="mailto:dennishoulihan12@gmail.com"
+     style="padding:0.75rem 1.25rem; border-radius:9999px; border:1px solid; text-decoration:none;">
+    Contact
+  </a>
 </div>
+
