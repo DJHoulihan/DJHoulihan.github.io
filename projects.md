@@ -1,4 +1,5 @@
 ---
+layout: home
 title: Projects
 feature_text: |
   A demo of Markdown and HTML includes
