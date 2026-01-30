@@ -29,7 +29,7 @@ excerpt: null
   <div style="font-weight: bold; margin-top: 0.25rem;">
     Data Scientist and Quant Enthusiast
   </div>
-</div>
+
 
 
 <!-- Optional: add a call-to-action or links below -->
