@@ -19,12 +19,12 @@ excerpt: null
   <!-- Name + description centered vertically -->
   <div style="flex:1; text-align:center;">
     <h1 style="margin:0; font-size:2rem;">
-      Hi, my name is Dennis...
+      Dennis Houlihan
     </h1>
     <p style="margin-top:0.5rem; font-size:1.1rem; line-height:1.5; max-width:40rem; margin-left:auto; margin-right:auto;">
-      And I am a 
+      MSc, Physics
       <span style="font-weight: bold;">
-        recovering Physicist.
+        Data Scientist and Quant Enthusiast
       </span>
     </p>
   </div>
