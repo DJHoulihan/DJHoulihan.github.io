@@ -13,14 +13,14 @@ excerpt: null
   <!-- TOP ROW: PHOTO + NAME -->
   <div style="display:flex; align-items:center; gap:3rem;">
 
-    <!-- LEFT: PHOTO -->
+  <!-- LEFT: PHOTO -->
   <div style="flex:0 0 auto; width:320px; height:320px; border-radius:9999px; overflow:hidden;">
       <img src="assets/images/bio-photo.jpg"
            alt="Bio picture"
            style="width:100%; height:100%; object-fit:cover;" />
     </div>
 
-    <!-- RIGHT: NAME / TITLE / BUTTONS -->
+  <!-- RIGHT: NAME / TITLE / BUTTONS -->
   <div style="flex:1;">
       <h1 style="margin-top:0; font-size:2rem;">
         Dennis Houlihan
