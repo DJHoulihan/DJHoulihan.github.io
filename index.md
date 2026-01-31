@@ -6,8 +6,6 @@ excerpt: null
 ---
 <!-- Header stays unchanged -->
 
-<!-- # Your Site Title -->
-
 <!-- Bio section: picture on the left, name + description centered to the right -->
 
 <div style="display:flex; justify-content:flex-start; align-items:center; gap:2rem; margin-top:2rem;">
@@ -37,13 +35,18 @@ excerpt: null
      style="padding:0.75rem 1.25rem; border-radius:9999px; border:1px solid; text-decoration:none;">
     Contact
   </a>
-</div>
+  </div>
+  
+</div> <!-- ✅ CLOSE FLEX ROW -->
+
 <!-- ABOUT SECTION -->
-        <section id="about" class="section-pad-small">
-            <div class="container">
-                <div class="glass-panel">
-                    <h2>About Me</h2>
-                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
-                        I am a <strong>PhD Candidate in Physics</strong> with a focus on applied data science and machine learning. My work involves building and evaluating models on large-scale                            datasets, quantifying uncertainty, and translating complex quantitative problems into actionable insights. I am currently pursuing industry data science roles.
-                    </p>
-                    <div class="architecture-diagram">
+<section id="about" class="section-pad-small">
+  <div class="container">
+    <div class="glass-panel">
+      <h2>About Me</h2>
+      <p style="font-size: 1.1rem; margin-bottom: 20px;">
+        I am a <strong>PhD Candidate in Physics</strong> with a focus on applied data science and machine learning. My work involves building and evaluating models on large-scale datasets, quantifying uncertainty, and translating complex quantitative problems into actionable insights. I am currently pursuing industry data science roles.
+      </p>
+    </div>
+  </div>
+</section>
