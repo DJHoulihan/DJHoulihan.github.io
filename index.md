@@ -21,17 +21,17 @@ excerpt: null
       Dennis Houlihan, MSc
     </h1>
 
-    <div style="font-weight:bold; margin-bottom:1.5rem;">
+  <div style="font-weight:bold; margin-bottom:1.5rem;">
       Physicist, Data Scientist, and Quant Enthusiast
     </div>
 
-    <div style="display:flex; gap:1rem;">
+  <div style="display:flex; gap:1rem;">
       <a href="/projects/"
          style="padding:0.75rem 1.25rem; border-radius:9999px; border:1px solid; text-decoration:none;">
         Projects
       </a>
 
-      <a href="mailto:dennishoulihan12@gmail.com"
+  <a href="mailto:dennishoulihan12@gmail.com"
          style="padding:0.75rem 1.25rem; border-radius:9999px; border:1px solid; text-decoration:none;">
         Contact
       </a>
