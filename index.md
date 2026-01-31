@@ -65,7 +65,7 @@ excerpt: null
   "></div>
 
   <p style="font-size:1.1rem; margin-bottom:0;">
-    I am a <strong>PhD Candidate in Physics</strong> with a focus on applied data science and machine learning.
+    I am a <strong>Data Scientist</strong> with a focus on applied data science and machine learning.
     My work involves building and evaluating models on large-scale datasets, quantifying uncertainty,
     and translating complex quantitative problems into actionable insights.
     I am currently pursuing industry data science roles.
