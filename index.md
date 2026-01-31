@@ -39,14 +39,12 @@ excerpt: null
   
 </div> <!-- ✅ CLOSE FLEX ROW -->
 
-<!-- ABOUT SECTION -->
 <section id="about" class="section-pad-small">
-  <div class="container">
-    <div class="glass-panel">
-      <h2>About Me</h2>
-      <p style="font-size: 1.1rem; margin-bottom: 20px;">
-        I am a <strong>PhD Candidate in Physics</strong> with a focus on applied data science and machine learning. My work involves building and evaluating models on large-scale datasets, quantifying uncertainty, and translating complex quantitative problems into actionable insights. I am currently pursuing industry data science roles.
-      </p>
-    </div>
+  <div class="glass-panel" style="max-width: 900px; margin-top: 3rem;">
+    <h2>About Me</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+      I am a <strong>PhD Candidate in Physics</strong> with a focus on applied data science and machine learning...
+    </p>
   </div>
 </section>
+
