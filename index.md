@@ -18,7 +18,7 @@ excerpt: null
   <!-- RIGHT: NAME / TITLE / BUTTONS -->
   <div style="flex:1;">
     <h1 style="margin-top:0; font-size:2rem;">
-      Dennis Houlihan, MSc
+      Dennis Houlihan
     </h1>
 
   <div style="font-weight:bold; margin-bottom:1.5rem;">
