@@ -49,7 +49,7 @@ excerpt: null
 <!-- ===================== -->
 <!-- ABOUT SECTION -->
 <!-- ===================== -->
-<section id="about" style="max-width:900px; margin:4rem auto 0 auto;">
+<section id="about" style="max-width:1200px; margin:4rem auto 0 auto; padding:0 2rem;">
 
   <h2 style="text-align:left; margin-bottom:0.5rem;">
     About Me
