@@ -43,8 +43,9 @@ excerpt: null
 <!-- ABOUT ME: FULL WIDTH, CENTERED -->
 <div style="max-width:900px; margin:4rem auto 0 auto; text-align:center;">
 
-  <div class="glass-panel">
-    <h2>About Me</h2>
+  <h2 style="text-align:left;margin-bottom:0.5rem;">
+      About Me
+    </h2>
     <p style="font-size:1.1rem; margin-bottom:0;">
       I am a <strong>PhD Candidate in Physics</strong> with a focus on applied data science and machine learning.
       My work involves building and evaluating models on large-scale datasets, quantifying uncertainty,
