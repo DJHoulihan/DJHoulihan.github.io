@@ -102,7 +102,7 @@ a:hover {
    ======================================== */
 header {
   background-color: var(--bg-secondary);
-  color: #ffffff; 
+  color: #ffffff !important; 
   padding: 1rem var(--padding-mobile);
   position: sticky;
   top: 0;
