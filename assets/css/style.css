@@ -24,7 +24,7 @@
   --bg-primary: #FFFFFF;        /* Forest green background */
   --bg-secondary: #0d2410;      /* Darker forest for header/footer */
   --text-primary: #000000;      /* Light text color */
-  --text-secondary: #d4cfc7;    /* Secondary text color */
+  --text-secondary: #0000005a;    /* Secondary text color */
   
   /* Accent Colors */
   --accent-primary: #b87333;    /* Copper - for links and highlights */
@@ -102,6 +102,7 @@ a:hover {
    ======================================== */
 header {
   background-color: var(--bg-secondary);
+  color: #ffffff; 
   padding: 1rem var(--padding-mobile);
   position: sticky;
   top: 0;
