@@ -1,0 +1,308 @@
+/* ========================================
+   CUSTOMIZATION GUIDE
+   ======================================== 
+   
+   To customize your site, edit the values below:
+   
+   1. COLORS: Change the color values in the :root section
+   2. SPACING: Adjust padding values in the spacing section
+   3. FONTS: Change font-family values
+   4. SIZES: Modify font-size, width, height values
+   
+   ======================================== */
+
+/* ========================================
+   COLOR SCHEME
+   Edit these to change your site colors
+   ======================================== */
+:root {
+  /* Main Colors */
+  --bg-primary: #1e4620;        /* Forest green background */
+  --bg-secondary: #0d2410;      /* Darker forest for header/footer */
+  --text-primary: #f8f6f3;      /* Light text color */
+  --text-secondary: #d4cfc7;    /* Secondary text color */
+  
+  /* Accent Colors */
+  --accent-primary: #b87333;    /* Copper - for links and highlights */
+  --accent-hover: #d4cfc7;      /* Hover state for links */
+  
+  /* Spacing */
+  --gap-small: 1rem;
+  --gap-medium: 1.5rem;
+  --gap-large: 3rem;
+  
+  /* Responsive padding */
+  --padding-mobile: 1rem;
+  --padding-tablet: 2rem;
+  --padding-desktop: 3rem;
+}
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* ========================================
+   LINKS
+   ======================================== */
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ========================================
+   LAYOUT - HEADER
+   ======================================== */
+header {
+  background-color: var(--bg-secondary);
+  padding: 1rem var(--padding-mobile);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--accent-primary);
+}
+
+/* ========================================
+   LAYOUT - MAIN CONTENT
+   ======================================== */
+main {
+  padding: var(--padding-mobile);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-medium);
+  margin-top: var(--gap-large);
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 250px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero-content h1 {
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--accent-primary);
+  border-radius: 50px;
+  color: var(--accent-primary);
+  background-color: transparent;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   CONTENT SECTIONS
+   ======================================== */
+.section {
+  margin-top: var(--gap-large);
+}
+
+.section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.section-underline {
+  width: 90px;
+  height: 6px;
+  background-color: var(--accent-primary);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+  background-color: var(--bg-secondary);
+  padding: 2rem var(--padding-mobile);
+  margin-top: 4rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet */
+@media (min-width: 768px) {
+  main {
+    padding: var(--padding-tablet);
+  }
+  
+  header {
+    padding: 1rem var(--padding-tablet);
+  }
+  
+  footer {
+    padding: 2rem var(--padding-tablet);
+  }
+  
+  .hero-image {
+    width: 300px;
+    height: 300px;
+  }
+  
+  h1 { font-size: 3rem; }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  main {
+    padding: var(--padding-desktop);
+  }
+  
+  header {
+    padding: 1rem var(--padding-desktop);
+  }
+  
+  footer {
+    padding: 2rem var(--padding-desktop);
+  }
+  
+  .hero {
+    gap: var(--gap-large);
+  }
+  
+  .hero-image {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-3 { margin-bottom: 3rem; }
