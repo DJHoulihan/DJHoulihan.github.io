@@ -56,6 +56,150 @@
   }
 }
 
+/* ========================================
+   FOREST GREEN COLOR SCHEME OPTIONS
+   ======================================== */
+
+/* Choose ONE of the three options below by uncommenting it */
+
+/* ----------------------------------------
+   OPTION 1: Classic Forest & Cream
+   Forest green with warm cream accents
+   ---------------------------------------- */
+/*
+:root {
+  --forest-green: #2d5016;
+  --dark-forest: #1a3009;
+  --light-forest: #4a7c2c;
+  --cream: #f5f1e8;
+  --gold: #d4a574;
+  --text-dark: #1a3009;
+  --text-light: #f5f1e8;
+}
+
+body {
+  background-color: var(--forest-green) !important;
+  color: var(--text-light) !important;
+}
+
+a {
+  color: var(--gold) !important;
+}
+
+a:hover {
+  color: var(--cream) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--cream) !important;
+}
+
+header {
+  background-color: var(--dark-forest) !important;
+}
+
+#about .underline {
+  background-color: var(--gold) !important;
+}
+*/
+
+/* ----------------------------------------
+   OPTION 2: Modern Forest & Sage
+   Forest green with cool sage and slate
+   ---------------------------------------- */
+/*
+:root {
+  --forest-green: #234d20;
+  --dark-forest: #0f2b0d;
+  --sage: #9caf88;
+  --slate: #708090;
+  --off-white: #fafafa;
+  --text-dark: #0f2b0d;
+  --text-light: #fafafa;
+}
+
+body {
+  background-color: var(--forest-green) !important;
+  color: var(--text-light) !important;
+}
+
+a {
+  color: var(--sage) !important;
+}
+
+a:hover {
+  color: var(--off-white) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--off-white) !important;
+}
+
+header {
+  background-color: var(--dark-forest) !important;
+}
+
+#about .underline {
+  background-color: var(--sage) !important;
+}
+*/
+
+/* ----------------------------------------
+   OPTION 3: Rich Forest & Copper
+   Deep forest green with copper accents
+   ---------------------------------------- */
+
+:root {
+  --forest-green: #1e4620;
+  --dark-forest: #0d2410;
+  --light-forest: #3a6b3f;
+  --copper: #b87333;
+  --soft-white: #f8f6f3;
+  --warm-gray: #d4cfc7;
+  --text-dark: #0d2410;
+  --text-light: #f8f6f3;
+}
+
+body {
+  background-color: var(--forest-green) !important;
+  color: var(--text-light) !important;
+}
+
+a {
+  color: var(--copper) !important;
+}
+
+a:hover {
+  color: var(--warm-gray) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--soft-white) !important;
+}
+
+header {
+  background-color: var(--dark-forest) !important;
+}
+
+/* Style the buttons */
+a[href="/projects/"],
+a[href^="mailto:"] {
+  border-color: var(--copper) !important;
+  color: var(--copper) !important;
+  background-color: transparent !important;
+}
+
+a[href="/projects/"]:hover,
+a[href^="mailto:"]:hover {
+  background-color: var(--copper) !important;
+  color: var(--forest-green) !important;
+}
+
+/* Update the blue underline in About section */
+#about > div[style*="background-color:#2563eb"] {
+  background-color: var(--copper) !important;
+}
+
 /* .home-bio {
   display: flex;
   align-items: center;
