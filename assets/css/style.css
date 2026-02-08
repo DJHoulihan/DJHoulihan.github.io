@@ -16,10 +16,14 @@
    Edit these to change your site colors
    ======================================== */
 :root {
-  /* Main Colors */
-  --bg-primary: #1e4620;        /* Forest green background */
+  /* Main Colors 
+   #0d2410 -- forest green
+   #000000 -- black
+   #f8f6f3 -- light text color
+   #b87333 -- copper*/
+  --bg-primary: #FFFFFF;        /* Forest green background */
   --bg-secondary: #0d2410;      /* Darker forest for header/footer */
-  --text-primary: #f8f6f3;      /* Light text color */
+  --text-primary: #000000;      /* Light text color */
   --text-secondary: #d4cfc7;    /* Secondary text color */
   
   /* Accent Colors */
