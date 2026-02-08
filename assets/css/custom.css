@@ -1,51 +1,58 @@
-/* Custom spacing adjustments to bring content closer to page edges */
+/* Custom spacing - brings content closer to page edges */
 
-/* Reduce the main content wrapper padding */
-.main {
-  padding-left: 1rem;
-  padding-right: 1rem;
+/* Target the hero section */
+#hero {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-/* Reduce max-width and side margins for the content */
-.content {
-  max-width: 100% !important;
-  margin-left: 1rem !important;
-  margin-right: 1rem !important;
+/* Target the about section - override the inline padding */
+#about {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
+  max-width: none !important;
 }
 
-/* Adjust the feature section (where your bio photo and text are) */
-.feature {
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
+/* Reduce the gap between photo and text */
+#hero > div {
+  gap: 1rem !important;
 }
 
-/* Reduce padding on the intro section */
-.intro {
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
-}
-
-/* For larger screens, still keep it relatively close to edges */
+/* For tablets and up - slightly more breathing room */
 @media screen and (min-width: 768px) {
-  .main {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  #hero {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
   
-  .content {
-    max-width: 95% !important;
-    margin-left: 2rem !important;
-    margin-right: 2rem !important;
+  #about {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
   }
   
-  .feature {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+  #hero > div {
+    gap: 1.5rem !important;
+  }
+}
+
+/* For larger screens */
+@media screen and (min-width: 1024px) {
+  #hero {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
   }
   
-  .intro {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+  #about {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
   }
 }
 
