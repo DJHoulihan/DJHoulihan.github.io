@@ -1,4 +1,117 @@
 ---
 layout: default
-collectionpage: fprojects
+title: Finance Projects
 ---
+
+<!-- HERO SECTION FOR PROJECTS -->
+<section class="hero" style="margin-top: 2rem; margin-bottom: 3rem;">
+  <div class="hero-content">
+    <h1>Projects</h1>
+    <div class="hero-subtitle">Financial modeling, data science, and quantitative analysis</div>
+  </div>
+</section>
+
+<div class="section-underline"></div>
+
+<!-- PROJECTS GRID -->
+<div class="projects-grid">
+  
+  <!-- Project 1 -->
+  <article class="project-card">
+    <h2>Portfolio Optimization</h2>
+    <p class="project-meta">Python • Pandas • TensorFlow • NumPy</p>
+    <p>Built a deep reinforcement learning model for portfolio optimization.</p>
+    <div class="project-links">
+      <a href="#" class="btn">View Project</a>
+      <a href="#" class="btn-secondary">GitHub</a>
+    </div>
+  </article>
+
+  <!-- Project 2 -->
+  <article class="project-card">
+    <h2>Options Pricing Model</h2>
+    <p class="project-meta">Python • SciPy • Finance</p>
+    <p>Developed Black-Scholes and Monte Carlo simulation models for options pricing. Includes Greeks calculation and volatility surface visualization.</p>
+    <div class="project-links">
+      <a href="#" class="btn">View Project</a>
+      <a href="#" class="btn-secondary">GitHub</a>
+    </div>
+  </article>
+
+  <!-- Project 3 -->
+  <article class="project-card">
+    <h2>Market Data Dashboard</h2>
+    <p class="project-meta">Python • Streamlit • yfinance</p>
+    <p>Interactive dashboard for real-time market analysis with technical indicators, correlation matrices, and custom alerts.</p>
+    <div class="project-links">
+      <a href="#" class="btn">View Project</a>
+      <a href="#" class="btn-secondary">GitHub</a>
+    </div>
+  </article>
+
+</div>
+
+<!-- Add custom styles at the bottom or in your main CSS -->
+<style>
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-primary);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.project-card h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.project-meta {
+  color: var(--accent-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.project-card p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--text-secondary);
+  border-radius: 50px;
+  color: var(--text-secondary);
+  background-color: transparent;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-secondary);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+}
+</style>

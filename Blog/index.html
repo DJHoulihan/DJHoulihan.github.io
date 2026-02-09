@@ -1,4 +1,26 @@
 ---
 layout: default
-collectionpage: posts
+title: Blog
 ---
+
+<!-- HERO SECTION FOR BLOG -->
+<section class="hero" style="margin-top: 2rem; margin-bottom: 3rem;">
+  <div class="hero-content">
+    <h1>Blog</h1>
+    <div class="hero-subtitle">Thoughts on data science, physics, and quantitative analysis</div>
+  </div>
+</section>
+
+<div class="section-underline"></div>
+
+<!-- BLOG POSTS LIST -->
+<div class="blog-posts">
+  {% for post in site.posts %}
+    <article class="blog-post-preview">
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+      <p>{{ post.excerpt }}</p>
+      <a href="{{ post.url | relative_url }}" class="btn">Read More</a>
+    </article>
+  {% endfor %}
+</div>
