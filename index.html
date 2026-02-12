@@ -16,7 +16,6 @@ layout: default
     <div class="hero-buttons">
       <a href="/Finance Projects/" class="btn">Finance Projects</a>
       <a href="/Data Science Projects/" class="btn">Data Science Projects</a>
-      <br>
       <a href="/Blog/" class="btn">Blog</a>
       <a href="mailto:dennishoulihan12@gmail.com" class="btn">Contact</a>
     </div>
@@ -152,6 +151,8 @@ layout: default
 
   </div>
 </section>
+
+
 
 <!-- Dual Timeline Styles -->
 <style>
@@ -338,6 +339,14 @@ layout: default
 
 .timeline-subitems li:last-child {
   margin-bottom: 0;
+}
+
+/* Button styles */
+.hero-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 12px;
+  justify-content: center;
 }
 
 /* Responsive: Stack vertically on mobile */
