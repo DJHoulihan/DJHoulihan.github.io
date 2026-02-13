@@ -248,7 +248,7 @@ footer {
   padding: 2rem var(--padding-mobile);
   margin-top: 4rem;
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--bg-primary);
 }
 
 /* ========================================
