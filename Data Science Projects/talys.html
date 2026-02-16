@@ -38,8 +38,10 @@ title: Bayesian-Optimized HDBSCAN Clustering
 
         In this work, I used TALYS to simulate the reaction 119Sn(n,&gamma;)120Sn and predict its astrophysical 
         reaction rates.​ TALYS is an open access software and database that can simulate various nuclear reactions. 
-        I then use a Bayesian appraoch to fit a double Lorenzian to find the location of the Giant Dipole and the 
-        Pygmy Dipole Resonance, important resonances that drive many nuclear reactions within stars. 
+        To input the correct parameters for important features such as the Giant Dipole Resonance (GDR) and Pygmy Dipole 
+        Resonance (PDR), I use a Bayesian approach via the emcee Python package to fit a double Lorenzian to experimental data 
+        to find the location and strength of the GDR and PDR. The PDR and GDR are important resonances that drive 
+        many nuclear reactions within stars. 
     </p>
   </section>
 
@@ -52,13 +54,6 @@ title: Bayesian-Optimized HDBSCAN Clustering
     <ul>
       <li><strong>Bayesian Optimization:</strong> Used Gaussian Process-based optimization to intelligently search the hyperparameter space</li>
       <li><strong>TALYS Simulation:</strong> Provided key features and energies to simulate nuclear reactions with TALYS.</li>
-    </ul>
-
-    <h3>Optimized Hyperparameters:</h3>
-    <ul>
-      <li><code>min_cluster_size</code>: Minimum number of samples in a cluster</li>
-      <li><code>min_samples</code>: Number of samples in a neighborhood for a point to be considered core</li>
-      <li><code>cluster_selection_epsilon</code>: Distance threshold for cluster merging</li>
     </ul>
   </section>
 
