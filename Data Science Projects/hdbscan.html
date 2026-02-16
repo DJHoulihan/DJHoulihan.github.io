@@ -9,17 +9,29 @@ title: Bayesian-Optimized HDBSCAN Clustering
     <h1>Bayesian-Optimized HDBSCAN Clustering</h1>
     <p class="project-meta">Python • Pandas • Scikit-Learn • NumPy • Bayesian Optimization</p>
     <div class="project-links">
-      <a href="/Data Science Projects/" class="btn-secondary">← Back to Projects</a>
+      <!-- <a href="/Data Science Projects/" class="btn-secondary">← Back to Projects</a> -->
       <a href="https://github.com/DJHoulihan/Bayesian-Optimized-HDBSCAN-for-SPS-Experiments" class="btn" target="_blank">View on GitHub</a>
+      <a href="/assets/pdfs/ML_in_Physics_Final_Project.pdf" class="btn" target="_blank">View White Paper</a>
     </div>
   </header>
 
   <!-- Project Overview -->
   <section class="project-section">
-    <h2>Overview</h2>
+    <h2>Abstract</h2>
     <div class="section-underline"></div>
     <p>
-      This project implements Bayesian optimization to tune hyperparameters for HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise) clustering algorithm. The optimization process was applied to experimental data from the Super-conducting Phase Separator (SPS) experiments at the John D. Fox Superconducting Linear Accelerator Laboratory.
+      This project comprises of a clustering algorithm to identify and gate on reactions
+      of interest measured with the Super-Enge Split-Pole Spectrograph (SE-SPS).
+      The algorithm uses scikit’s HDBSCAN clustering function to identify the number
+      of clusters in particle-identification (PID) plots and to prescribe each data
+      point to a cluster or as noise. Bayesian optimization of HDBSCAN parameters
+      was performed using scikit’s gp_minimize function, which uses Guassian
+      Processes to increase evaluation efficiency. The algorithm was tested on experimental
+      data with six SE-SPS magnetic field settings, with each test taking
+      about 10 seconds to run and producing satisfactory identification of particle
+      groups and gates around said groups. Limits to the algorithm arise if the dataset
+      is too sparse or if there are less than three clusters, as seen in the misidentification
+      of clusters in the 5.99 kG and 10 kG datasets.
     </p>
   </section>
 
@@ -28,7 +40,21 @@ title: Bayesian-Optimized HDBSCAN Clustering
     <h2>Problem Statement</h2>
     <div class="section-underline"></div>
     <p>
-      HDBSCAN is a powerful clustering algorithm, but its performance heavily depends on hyperparameter selection. Traditional grid search or random search methods are computationally expensive and may not find optimal parameters. This project addresses this challenge by implementing a Bayesian optimization approach to efficiently explore the hyperparameter space.
+      When performing experiments, many different reactions occur and it is the experiment's job to provide an apparatus to
+      gate on the specific reaction of interest. The Super-Enge Split-Pole Spectrograph (SE-SPS) at the John D. Fox Laboratory at Florida State University
+      uses a Particle Identification (PID) plot in order to differentiate the output particles of the reactions. The PID plot displays distinct
+      clusters that correspond to different ejected particles: protons, deuterons, alphas, and tritons. The experimenter then needs to manually
+      click and gate around the cluster of interest. This may seem easy, but each cluster changes size and shape depending on the angle of the 
+      detector, the magnetic field setting of the SE-SPS, as well as the beam energy. Therefore, this procedure becomes quite time consuming,
+      since these experiment settings need to be continually tuned, requiring new gates to be made. 
+      
+      This clustering algorithm attempts to streamline the process of identifying each particle group, omitting outliers, and performing 
+      a cut around the desired group no matter what settings are applied in the experiment. HDBSCAN was chosen for it robustness as it 
+      does not assume that the density is globally homogeneous. Instead, it explores all possible density scales which is important since 
+      clusters in the PID plot can, and often do, have different densities as reaction cross-sections (probabilities) vary. While HDBSCAN 
+      is a powerful clustering algorithm, its performance heavily depends on hyperparameter selection. Traditional grid search or random 
+      search methods are computationally expensive and may not find optimal parameters, therefore I implemented a Bayesian optimization 
+      approach to efficiently explore the hyperparameter space.
     </p>
   </section>
 
@@ -49,7 +75,6 @@ title: Bayesian-Optimized HDBSCAN Clustering
     <ul>
       <li><code>min_cluster_size</code>: Minimum number of samples in a cluster</li>
       <li><code>min_samples</code>: Number of samples in a neighborhood for a point to be considered core</li>
-      <li><code>cluster_selection_epsilon</code>: Distance threshold for cluster merging</li>
     </ul>
   </section>
 
@@ -63,7 +88,22 @@ title: Bayesian-Optimized HDBSCAN Clustering
       <p class="image-caption">Comparison of clustering results before and after Bayesian optimization</p>
     </div>
     <p>
-      The Bayesian optimization approach significantly improved clustering quality compared to default parameters:
+      Figure 4 shows the results of the algorithm after running it for each magnetic field setting. Each setting
+      was resampled to 2000 data points except for the 10 KG setting, which had less than 1000 data points in
+      its original set. Overall, the algorithm works very well as it identifies the correct amount of clusters and
+      also prescribes the correct particle label in most field settings. However, proton gates often have a ’tail’
+      that includes data points to the far left of the dense centroid. This tail may or may not be including noise
+      or particles that are not protons. This could arise from the resampling phase of the algorithm and future
+      analysis will be need to fine tune this and to make sure it does not include incorrect data points.
+      
+      There are misidentifications in the 10 kG and 5.99 kG setting. In the 10 kg setting, the algorithm
+      does not recognize the proton group as it is too sparse. As a result, it incorrectly labels the deuteron
+      group as the proton group and the triton group as the alpha group. In the 5.99 kG setting, the proton
+      group was labeled as the deuteron group and the deuteron group was labeled as the alpha group. It seems
+      the conditions currently set for the algorithm have major limitations when there are only two groups
+      present.
+
+      Overall, the Bayesian optimization approach significantly improved clustering quality compared to default parameters:
     </p>
     <ul>
       <li>Reduced optimization time by finding optimal parameters in fewer iterations</li>
