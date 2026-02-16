@@ -1,0 +1,219 @@
+---
+layout: default
+title: Bayesian-Optimized HDBSCAN Clustering
+---
+
+<article class="project-detail">
+  <!-- Project Header -->
+  <header class="project-header">
+    <h1>TALYS Nuclear Reaction Simulations</h1>
+    <p class="project-meta">Python • SciPy • TALYS • Nuclear Physics</p>
+    <div class="project-links">
+      <a href="https://github.com/DJHoulihan/talys-simulations" class="btn" target="_blank">View on GitHub</a>
+    </div>
+  </header>
+
+  <!-- Project Overview -->
+  <section class="project-section">
+    <h2>Overview</h2>
+    <div class="section-underline"></div>
+    <p>
+       Used the TALYS program to simulate neutron capture in tin and other nuclei to investigate how the gamma 
+       strength function (GSF), level density, and optical model potential (OMP) models impact reaction cross 
+       sections and astrophysical rates. Used Bayesian approach to fit GSF and extract the location of important 
+       resonances.
+    </p>
+  </section>
+
+  <!-- Problem Statement -->
+  <section class="project-section">
+    <h2>Problem Statement</h2>
+    <div class="section-underline"></div>
+    <p>
+        ​Experimental data of (&gamma;,n), (&gamma;,p), (&gamma;,&alpha;), or their surrogate reactions
+        cannot alone be used to directly measure the astrophysical reaction rates because of the thermal 
+        excitations of stellar nuclei. Therefore, statistical models are thus needed to predict astrophysical
+        reaction rates. The TALYS simulation investigates how the inclusion of the Pygmy Dipole Resonance affects
+        atrophysical reaction rates.
+
+        In this work, I used TALYS to simulate the reaction 119Sn(n,&gamma;)120Sn and predict its astrophysical 
+        reaction rates.​ TALYS is an open access software and database that can simulate various nuclear reactions. 
+        I then use a Bayesian appraoch to fit a double Lorenzian to find the location of the Giant Dipole and the 
+        Pygmy Dipole Resonance, important resonances that drive many nuclear reactions within stars. 
+    </p>
+  </section>
+
+  <!-- Technical Approach -->
+  <section class="project-section">
+    <h2>Technical Approach</h2>
+    <div class="section-underline"></div>
+    
+    <h3>Key Components:</h3>
+    <ul>
+      <li><strong>Bayesian Optimization:</strong> Used Gaussian Process-based optimization to intelligently search the hyperparameter space</li>
+      <li><strong>TALYS Simulation:</strong> Provided key features and energies to simulate nuclear reactions with TALYS.</li>
+    </ul>
+
+    <h3>Optimized Hyperparameters:</h3>
+    <ul>
+      <li><code>min_cluster_size</code>: Minimum number of samples in a cluster</li>
+      <li><code>min_samples</code>: Number of samples in a neighborhood for a point to be considered core</li>
+      <li><code>cluster_selection_epsilon</code>: Distance threshold for cluster merging</li>
+    </ul>
+  </section>
+
+  <!-- Results -->
+  <section class="project-section">
+    <h2>Results & Impact</h2>
+    <div class="section-underline"></div>
+    <div class="project-image">
+      <img src="/assets/images/reactionrates.png" alt="Reaction Rates with and without PDR">
+      <p class="image-caption">Astrophysical reaction rates with the PDR included and excluded.</p>
+    </div>
+    <div class="project-image">
+      <img src="/assets/images/Sn120.png" alt="GSF for 120 SN">
+      <p class="image-caption">The gamma strength function of 120 Sn with a dobule Lorenzian fit with and without the PDR.</p>
+    </div>
+    <div class="project-image">
+      <img src="/assets/images/emceecorner.png" alt="corner plot">
+      <p class="image-caption">Corner plot of double Lorenzian parameters.</p>
+    </div>
+    <div class="project-image">
+      <img src="/assets/images/emceeparamchart.png" alt="HDBSCAN clustering results visualization">
+      <p class="image-caption">Chart showing convergence of Double Lorenzian Parameters over time.</p>
+    </div>
+    <p>
+        The Bayesian optimization allowed for more accurate fitting of the gamma strength function. The resulting
+        corner plot shows the prior distributions of each parameter. The final figure shows the convergence of the 
+        parameters as the step number increases. 
+        
+        The result of this optimization was inputted into the TALYS simulation. The resulting influence on the 
+        reaction rates can be seen in the first diagram, where we can see that the PDR heavily increases the reaction rates.
+    </p>
+  </section>
+
+  <!-- Technologies -->
+  <section class="project-section">
+    <h2>Technologies Used</h2>
+    <div class="section-underline"></div>
+    <div class="tech-stack">
+      <span class="tech-badge">Python</span>
+      <span class="tech-badge">emcee</span>
+      <span class="tech-badge">NumPy</span>
+      <span class="tech-badge">Bayesian Optimization</span>
+      <span class="tech-badge">TALYS</span>
+    </div>
+  </section>
+
+  <!-- Footer Navigation -->
+  <footer class="project-footer">
+    <a href="/projects/" class="btn">← Back to Data Science Projects</a>
+  </footer>
+</article>
+
+<!-- Project Detail Styles -->
+<style>
+.project-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid var(--accent-primary);
+}
+
+.project-header h1 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.project-header .project-meta {
+  color: var(--accent-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.project-header .project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-section {
+  margin-bottom: 3rem;
+}
+
+.project-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff !important;
+}
+
+.project-section h3 {
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #000000;
+}
+
+.project-section p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.project-section ul {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-section li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: #000000;
+}
+
+.project-section code {
+  background-color: rgba(184, 115, 51, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: rgba(184, 115, 51, 0.2);
+  border: 2px solid var(--accent-primary);
+  border-radius: 20px;
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.project-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(184, 115, 51, 0.3);
+}
+
+.section-underline {
+  width: 90px;
+  height: 6px;
+  background-color: var(--accent-primary);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+</style>
