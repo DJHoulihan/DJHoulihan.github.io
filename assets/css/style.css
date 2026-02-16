@@ -104,7 +104,7 @@ header {
   background-color: var(--bg-secondary);
   color: #ffffff !important; 
   padding: 1rem var(--padding-mobile);
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
