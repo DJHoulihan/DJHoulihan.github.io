@@ -1,0 +1,195 @@
+---
+layout: default
+title: Bayesian-Optimized HDBSCAN Clustering
+---
+
+<article class="project-detail">
+  <!-- Project Header -->
+  <header class="project-header">
+    <h1>Bayesian-Optimized HDBSCAN Clustering</h1>
+    <p class="project-meta">Python • Pandas • Scikit-Learn • NumPy • Bayesian Optimization</p>
+    <div class="project-links">
+      <a href="https://github.com/DJHoulihan/Bayesian-Optimized-HDBSCAN-for-SPS-Experiments" class="btn" target="_blank">View on GitHub</a>
+      <a href="/projects/" class="btn-secondary">← Back to Projects</a>
+    </div>
+  </header>
+
+  <!-- Project Overview -->
+  <section class="project-section">
+    <h2>Overview</h2>
+    <div class="section-underline"></div>
+    <p>
+      This project implements Bayesian optimization to tune hyperparameters for HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise) clustering algorithm. The optimization process was applied to experimental data from the Super-conducting Phase Separator (SPS) experiments at the John D. Fox Superconducting Linear Accelerator Laboratory.
+    </p>
+  </section>
+
+  <!-- Problem Statement -->
+  <section class="project-section">
+    <h2>Problem Statement</h2>
+    <div class="section-underline"></div>
+    <p>
+      HDBSCAN is a powerful clustering algorithm, but its performance heavily depends on hyperparameter selection. Traditional grid search or random search methods are computationally expensive and may not find optimal parameters. This project addresses this challenge by implementing a Bayesian optimization approach to efficiently explore the hyperparameter space.
+    </p>
+  </section>
+
+  <!-- Technical Approach -->
+  <section class="project-section">
+    <h2>Technical Approach</h2>
+    <div class="section-underline"></div>
+    
+    <h3>Key Components:</h3>
+    <ul>
+      <li><strong>Bayesian Optimization:</strong> Used Gaussian Process-based optimization to intelligently search the hyperparameter space</li>
+      <li><strong>HDBSCAN Clustering:</strong> Applied density-based clustering to identify patterns in experimental physics data</li>
+      <li><strong>Objective Function:</strong> Optimized clustering quality metrics including silhouette score and cluster stability</li>
+      <li><strong>Data Processing:</strong> Implemented robust preprocessing pipeline using Pandas and NumPy</li>
+    </ul>
+
+    <h3>Optimized Hyperparameters:</h3>
+    <ul>
+      <li><code>min_cluster_size</code>: Minimum number of samples in a cluster</li>
+      <li><code>min_samples</code>: Number of samples in a neighborhood for a point to be considered core</li>
+      <li><code>cluster_selection_epsilon</code>: Distance threshold for cluster merging</li>
+    </ul>
+  </section>
+
+  <!-- Results -->
+  <section class="project-section">
+    <h2>Results & Impact</h2>
+    <div class="section-underline"></div>
+    <p>
+      The Bayesian optimization approach significantly improved clustering quality compared to default parameters:
+    </p>
+    <ul>
+      <li>Reduced optimization time by finding optimal parameters in fewer iterations</li>
+      <li>Improved cluster separation and identification of meaningful patterns in SPS experimental data</li>
+      <li>Provided a reusable framework for hyperparameter optimization in similar clustering problems</li>
+    </ul>
+  </section>
+
+  <!-- Technologies -->
+  <section class="project-section">
+    <h2>Technologies Used</h2>
+    <div class="section-underline"></div>
+    <div class="tech-stack">
+      <span class="tech-badge">Python</span>
+      <span class="tech-badge">Scikit-Learn</span>
+      <span class="tech-badge">Pandas</span>
+      <span class="tech-badge">NumPy</span>
+      <span class="tech-badge">Bayesian Optimization</span>
+      <span class="tech-badge">HDBSCAN</span>
+    </div>
+  </section>
+
+  <!-- Footer Navigation -->
+  <footer class="project-footer">
+    <a href="/projects/" class="btn">← Back to All Projects</a>
+  </footer>
+</article>
+
+<!-- Project Detail Styles -->
+<style>
+.project-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid var(--accent-primary);
+}
+
+.project-header h1 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.project-header .project-meta {
+  color: var(--accent-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.project-header .project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-section {
+  margin-bottom: 3rem;
+}
+
+.project-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.project-section h3 {
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #000000;
+}
+
+.project-section p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.project-section ul {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-section li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: #000000;
+}
+
+.project-section code {
+  background-color: rgba(184, 115, 51, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: rgba(184, 115, 51, 0.2);
+  border: 2px solid var(--accent-primary);
+  border-radius: 20px;
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.project-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(184, 115, 51, 0.3);
+}
+
+.section-underline {
+  width: 90px;
+  height: 6px;
+  background-color: var(--accent-primary);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+</style>
