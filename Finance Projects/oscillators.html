@@ -48,10 +48,10 @@ title: Market Oscillators
         The Kuramoto model is a model for the behavior of a large set of coupled oscillators, shown here:
     </p>
     <div style="text-align: center; margin: 1.5rem 0;">
-    \[ \ddot{\theta} = \omega_i + \frac{1}{N} \Sigma^{N}_{j=1} K_{ij}sin(\theta_j - \theta_i) \]
+    \[ \dot{\theta} = \omega_i + \frac{1}{N} \Sigma^{N}_{j=1} K_{ij}sin(\theta_j - \theta_i) \]
     </div>
     <p>
-        where \(\ddot{\theta}_i\)  is the time derivative of oscillator i's phase,  \(\omega_i\)  is the natural frequency, N is the number of oscillators, 
+        where \(\dot{\theta}_i\)  is the time derivative of oscillator i's phase,  \(\omega_i\)  is the natural frequency, N is the number of oscillators, 
         and \(K_{ij}\) is the coupling matrix that describes how strongly correlated oscillator i and j are. There are assumptions in this model, including that the 
         oscillators are identical or nearly identical and that the interactions depend sinusoidally on the phase difference between each pair of oscillators. As it stands, 
         my Kuramoto model does not include a white noise parameter and is purely deterministic. Future tweaks and inclusions of noise parameters may be desired or 
@@ -94,7 +94,7 @@ title: Market Oscillators
     <h2>Results & Impact</h2>
     <div class="section-underline"></div>
     <div class="project-image">
-      <img src="/assets/images/marketmodel_osc.png" style="width: 800px; height: 1000px;" alt="Kuramoto Model fit to market indexes.">
+      <img src="/assets/images/marketmodel_osc.png" style="width: 800px; height: auto;" alt="Kuramoto Model fit to market indexes.">
       <p class="image-caption"><strong>Figure 1:</strong> The Kuramoto model fit to weekly closing prices of 10 market indexes.</p>
     </div>
     <div class="project-image">
