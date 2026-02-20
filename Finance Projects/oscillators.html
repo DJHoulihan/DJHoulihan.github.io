@@ -1,0 +1,259 @@
+---
+layout: default
+title: Market Oscillators
+---
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => renderMathInElement(document.body));
+    </script>
+</head>
+
+<article class="project-detail">
+  <!-- Project Header -->
+  <header class="project-header">
+    <h1>Markets as Coupled Oscillators</h1>
+    <p class="project-meta">Python • emcee • SciPy • Physics</p>
+    <div class="project-links">
+      <a href="https://github.com/DJHoulihan/Bayesian-Challenges" class="btn" target="_blank">View on GitHub</a>
+    </div>
+  </header>
+
+  <!-- Project Overview -->
+  <section class="project-section">
+    <h2>Overview</h2>
+    <div class="section-underline"></div>
+    <p>
+       The goal of this project is to apply my physics experience to finance by modeling interconnected global markets as a network of coupled oscilllators 
+       (think pendulums together on a string). By analyzing key metrics such as the resulting coupling matrix  \(K\), one can uncover underlying coupling strengths 
+       between markets, explore the synchronization of markets, and perform stability analysis on the system as a whole. This is not meant to predict prices, 
+       but rather probe the dynamics of the system within a given period of time.
+    </p>
+  </section>
+
+  <!-- Problem Statement -->
+  <section class="project-section">
+    <h2>Problem Statement</h2>
+    <div class="section-underline"></div>
+    <p>
+        Synchronization in financial markets refers to the extent to which the behaviors of different assets or markets become correlated over time. 
+        As synchronization increases, the movements of individual stocks become more dependent on one another, reducing effective diversification. 
+        This interdependence can amplify systemic risk: a local shock to one asset or sector may propagate through the network, triggering broader market instability. 
+        For instance, if stock A is strongly coupled to stock B, a significant decline in B’s price may lead to a corresponding drop in A’s price, even in the absence 
+        of new information. High synchronization across markets may thus signal a fragile equilibrium, where localized disturbances lead to global cascades. In contrast, 
+        low synchronization implies greater robustness, as idiosyncratic shocks are more likely to remain contained. To quantify synchronization between financial markets, 
+        this project attempts to treat financial markets as a network of coupled oscillators whose phase (movement) is governed by the Kuramoto model. 
+        The Kuramoto model is a model for the behavior of a large set of coupled oscillators, shown here:
+    </p>
+    <div style="text-align: center; margin: 1.5rem 0;">
+    \[ \ddot{\theta} = \omega_i + \frac{1}{N} \Sigma^{N}_{j=1} K_{ij}sin(\theta_j - \theta_i) \]
+    </div>
+    <p>
+        where \(\ddot{\theta}_i\)  is the time derivative of oscillator i's phase,  \(\omega_i\)  is the natural frequency, N is the number of oscillators, 
+        and \(K_{ij}\) is the coupling matrix that describes how strongly correlated oscillator i and j are. There are assumptions in this model, including that the 
+        oscillators are identical or nearly identical and that the interactions depend sinusoidally on the phase difference between each pair of oscillators. As it stands, 
+        my Kuramoto model does not include a white noise parameter and is purely deterministic. Future tweaks and inclusions of noise parameters may be desired or 
+        necessary for better representation of the stochastic nature of financial markets. 
+    </p>
+
+  </section>
+
+  <!-- Technical Approach -->
+  <section class="project-section">
+    <h2>Technical Approach</h2>
+    <div class="section-underline"></div>
+    
+    <h3>Key Components:</h3>
+    <ul>
+      <li><strong>Bayesian Optimization:</strong> Used Gaussian Process-based optimization to intelligently search the hyperparameter space.</li>
+      <li><strong>Hidden Markov Monte Carlo:</strong> Sampled from the posterior distributions of the model parameters.</li>
+    </ul>
+    <h3>Model Procedure</h3>
+    <p>
+        This model can take N number of financial markets from the Yahoo! finance (yfinance python package). It has been tested on weekly closing prices for up to N = 10 major 
+        stock indexes, including ^GSPC, ^IXIC, ^FTSE, and others. Naturally, a high level of synchronization is expected among indexes, as each index aggregates the behavior of 
+        numerous underlying stocks. Testing on individual stocks would also be interesting, especially stocks from a diverse set of industries.
+    </p>
+    <p>
+        Since the current model is purely deterministic, I apply a third-order Savitzky–Golay filter over a 10-week window to smooth the price data for improved fitting. 
+        The objective is to analyze global synchronization and large-scale movements rather than local fluctuations, so smoothing should be appropriate as long as it does not 
+        obscure these broader trends.
+    </p>
+    <p>
+        After smoothing, I take the logarithm of the prices,  \(log(P_i(t))\) , and subtract the mean across all assets at each time step, yielding  
+        \(\theta_i = log(P_i(t)) - ⟨log(P_i(t))⟩). This normalization step mitigates differences in absolute price levels between markets or stocks, 
+        aiding numerical stability during fitting. Importantly, it does not alter the underlying Kuramoto dynamics, which are invariant under uniform (vertical) 
+        shifts across oscillators. The parameters  \(\omega_i\)  and  \(K_{ij}\)  are then extrapolated.
+    </p>
+  </section>
+
+  <!-- Results -->
+  <section class="project-section">
+    <h2>Results & Impact</h2>
+    <div class="section-underline"></div>
+    <div class="project-image">
+      <img src="/assets/images/marketmodel_osc.png" style="width: 500px; height: 1000px;" alt="Kuramoto Model fit to market indexes.">
+      <p class="image-caption"><strong>Figure 1:</strong> The Kuramoto model fit to weekly closing prices of 10 market indexes.</p>
+    </div>
+    <div class="project-image">
+      <img src="/assets/images/orderparameter.png" style="width: 500px; height: auto;" alt="GSF for 120 SN">
+      <p class="image-caption"><strong>Figure 2:</strong> The order parameter that measures general synchronization among all the indexes over time. </p>
+    </div>
+    <p>
+    The corner plot above shows the posterior distributions for each of the five parameters: \(a\), \(b\), \(c\), \(d\),
+    and \(\log(f)\). The diagonal histograms show the marginalized distribution for each parameter, while the 
+    off-diagonal panels show the joint distributions between parameter pairs, revealing any correlations.
+    </p>
+    <p>
+    The recovered parameter estimates with their 1\(\sigma\) uncertainties are:
+    </p>
+    <div style="text-align: center; margin: 1.5rem 0;">
+        \[
+        a_V = 10.369^{+0.040}_{-0.041}, \quad a_S = 13.935^{+0.108}_{-0.111}, \quad a_A = 3.232^{+0.114}_{-0.116}, \quad a_c = 0.497^{+0.003}_{-0.004}, \quad log(f) = -4.121^{0.014}_{-0.014}
+        \]
+    </div>
+    <p>
+        Comparing these to commonly accepted literature values — \(a_V \approx 15.5\) MeV, \(a_S \approx 17.2\) MeV,
+        \(a_C \approx 0.70\) MeV, and \(a_A \approx 23\) MeV — reveals notable discrepancies, particularly in \(a_C\) and \(a_A\).
+        These differences are likely attributable to the subset of nuclei used for fitting: by restricting the dataset to heavier nuclei,
+        the model is calibrated to a regime where certain terms contribute differently than across the full nuclear chart.
+        The volume and surface coefficients \(a_V\) and \(a_S\) are also lower than literature values, which is consistent
+        with fitting to a narrower mass range.
+    </p>
+    <p>
+        A strong positive correlation is visible between \(a\) and \(b\), as well as between \(b\) and \(d\),
+        suggesting these coefficient pairs are not fully independent given the data. The \(\log(f)\) parameter,
+        which accounts for any underestimated uncertainty in the model, converged to \(-4.121^{+0.014}_{-0.014}\),
+        indicating the additional model error is small.
+    </p>
+     
+  </section>
+
+  <!-- Technologies -->
+  <section class="project-section">
+    <h2>Technologies Used</h2>
+    <div class="section-underline"></div>
+    <div class="tech-stack">
+      <span class="tech-badge">Python</span>
+      <span class="tech-badge">emcee</span>
+      <span class="tech-badge">NumPy</span>
+      <span class="tech-badge">Bayesian Optimization</span>
+      <span class="tech-badge">SciPy</span>
+    </div>
+  </section>
+
+  <!-- Footer Navigation -->
+  <footer class="project-footer">
+    <a href="/Data Science Projects/" class="btn">← Back to Data Science Projects</a>
+  </footer>
+</article>
+
+<!-- Project Detail Styles -->
+<style>
+.project-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid var(--accent-primary);
+}
+
+.project-header h1 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: #ffffff !important;
+}
+
+.project-header .project-meta {
+  color: var(--accent-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.project-header .project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-section {
+  margin-bottom: 3rem;
+}
+
+.project-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.project-section h3 {
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #000000;
+}
+
+.project-section p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.project-section ul {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-section li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: #000000;
+}
+
+.project-section code {
+  background-color: rgba(184, 115, 51, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: rgba(184, 115, 51, 0.2);
+  border: 2px solid var(--accent-primary);
+  border-radius: 20px;
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.project-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(184, 115, 51, 0.3);
+}
+
+.section-underline {
+  width: 90px;
+  height: 6px;
+  background-color: var(--accent-primary);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+</style>
