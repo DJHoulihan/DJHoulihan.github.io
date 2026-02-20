@@ -17,7 +17,7 @@ title: Market Oscillators
     <h1>Markets as Coupled Oscillators</h1>
     <p class="project-meta">Python • emcee • SciPy • Physics</p>
     <div class="project-links">
-      <a href="https://github.com/DJHoulihan/Bayesian-Challenges" class="btn" target="_blank">View on GitHub</a>
+      <a href="https://github.com/DJHoulihan/MarketOscillators" class="btn" target="_blank">View on GitHub</a>
     </div>
   </header>
 
@@ -83,7 +83,7 @@ title: Market Oscillators
     </p>
     <p>
         After smoothing, I take the logarithm of the prices,  \(log(P_i(t))\) , and subtract the mean across all assets at each time step, yielding  
-        \(\theta_i = log(P_i(t)) - ⟨log(P_i(t))⟩). This normalization step mitigates differences in absolute price levels between markets or stocks, 
+        \(\theta_i = log(P_i(t)) - E(log(P_i(t)))\). This normalization step mitigates differences in absolute price levels between markets or stocks, 
         aiding numerical stability during fitting. Importantly, it does not alter the underlying Kuramoto dynamics, which are invariant under uniform (vertical) 
         shifts across oscillators. The parameters  \(\omega_i\)  and  \(K_{ij}\)  are then extrapolated.
     </p>
@@ -102,31 +102,31 @@ title: Market Oscillators
       <p class="image-caption"><strong>Figure 2:</strong> The order parameter that measures general synchronization among all the indexes over time. </p>
     </div>
     <p>
-    The corner plot above shows the posterior distributions for each of the five parameters: \(a\), \(b\), \(c\), \(d\),
-    and \(\log(f)\). The diagonal histograms show the marginalized distribution for each parameter, while the 
-    off-diagonal panels show the joint distributions between parameter pairs, revealing any correlations.
-    </p>
-    <p>
-    The recovered parameter estimates with their 1\(\sigma\) uncertainties are:
+        Figure 1 shows the results of fitting the model to ten different indexes with their tickers displayed. We can see that the model does a good job of
+        following the general shape of the markets, which helps validate the idea that these markets are directly interconnected and whose movements influence all other
+        models. We can further probe the systemic synchronization by calculating the order parameters \(r\) and \(\phi\). They are defined as:
     </p>
     <div style="text-align: center; margin: 1.5rem 0;">
         \[
-        a_V = 10.369^{+0.040}_{-0.041}, \quad a_S = 13.935^{+0.108}_{-0.111}, \quad a_A = 3.232^{+0.114}_{-0.116}, \quad a_c = 0.497^{+0.003}_{-0.004}, \quad log(f) = -4.121^{0.014}_{-0.014}
+        re^{i\phi} = \frac{1}{N}\Sigma^{N}_{j=1} e^{i\theta_j},
         \]
     </div>
     <p>
-        Comparing these to commonly accepted literature values — \(a_V \approx 15.5\) MeV, \(a_S \approx 17.2\) MeV,
-        \(a_C \approx 0.70\) MeV, and \(a_A \approx 23\) MeV — reveals notable discrepancies, particularly in \(a_C\) and \(a_A\).
-        These differences are likely attributable to the subset of nuclei used for fitting: by restricting the dataset to heavier nuclei,
-        the model is calibrated to a regime where certain terms contribute differently than across the full nuclear chart.
-        The volume and surface coefficients \(a_V\) and \(a_S\) are also lower than literature values, which is consistent
-        with fitting to a narrower mass range.
+        where \(r\) represents the phase-coherence and \(\phi\) is the average phase of the oscillators. \(r\) can have values between 0 (uncoupled) and 1 (full phase-locking).
+        Figure 2 shows the order parameter \(r\) and the change in \(r\) over time. We can see a collective synchronization beginning around 2004 until around 2008. This could 
+        show how collective synchronization leaves markets vulnerable to shocks in one or more markets. In this case, the housing market crashed in 2008, which had massive
+        effects across many markets, not just housing. 
     </p>
+    <div class="project-image">
+      <img src="/assets/images/phasediff.png" style="width: 500px; height: auto;" alt="GSF for 120 SN">
+      <p class="image-caption"><strong>Figure 3:</strong> The phase difference between two markets labelled 1 and 10. </p>
+    </div>
     <p>
-        A strong positive correlation is visible between \(a\) and \(b\), as well as between \(b\) and \(d\),
-        suggesting these coefficient pairs are not fully independent given the data. The \(\log(f)\) parameter,
-        which accounts for any underestimated uncertainty in the model, converged to \(-4.121^{+0.014}_{-0.014}\),
-        indicating the additional model error is small.
+        We can continue to probe synchronization between individual markets by plotting the phase differences of each. An example of can be seen in Figure 3. Ideally, if there is a convergence, then we can say the 
+        markets are "phase-locked" - meaning they are strongly coupled. If there is no convergence, then they are not strongly coupled. If the curves experience a sinusoidal
+        behavior with fixed amplitude, it could be indicative of quasi-periodicity, which could imply a few things: (1) they are not completely independent, but they are not perfectly
+        synchronized; (2) one market may consistently lead or lag the other by a varying amount, creatnig a cyclical pattern in their relative behavior; (3) the markets could be in 
+        an intermediate state between strong synchronization and complete uncoupling.  
     </p>
      
   </section>
