@@ -52,7 +52,7 @@ title: Liquid Drop Model
     </div>
     <p>
         where \(E_B\) is the binding energy, \(A\) is the total number of nucleons (mass number), \(Z\) us the number of protons (atom number),
-        and \a_V, \(a_S\), \(a_C\), \(a_A\) are derived coefficients corresponding to the volumne energy, surface energy, coulomb energy,
+        and \(a_V\), \(a_S\), \(a_C\), \(a_A\) are derived coefficients corresponding to the volumne energy, surface energy, coulomb energy,
         asymmetry energy, and pairing energy, respectively. 
 
         The goal of this exercise is to fit the model to the data and find the energy coefficients with uncertainty. The data used is a list of 
@@ -69,7 +69,15 @@ title: Liquid Drop Model
     <h3>Key Components:</h3>
     <ul>
       <li><strong>Bayesian Optimization:</strong> Used Gaussian Process-based optimization to intelligently search the hyperparameter space</li>
-      <li><strong>TALYS Simulation:</strong> Provided key features and energies to simulate nuclear reactions with TALYS.</li>
+      <li><strong>Hidden Markov Monte Carlo:</strong> Sampled from the posterior distributions of the model parameters</li>
+    </ul>
+    <h3>Optimized Parameters:</h3>
+    <ul>
+      <li><code>\(a_V\)</code>: Volume term</li>
+      <li><code>\(a_S\)</code>: Surface term</li>
+      <li><code>\(a_C\)</code>: Coulomb term</li>
+      <li><code>\(a_A\)</code>: Asymmetry term</li>
+      <li><code>\(\log(f)\)</code>: Term that accounts for any underestimated uncertainty in the model.</li>
     </ul>
   </section>
 
