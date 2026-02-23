@@ -1,0 +1,242 @@
+---
+layout: default
+title: Market Oscillators
+---
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => renderMathInElement(document.body));
+    </script>
+</head>
+
+<article class="project-detail">
+  <!-- Project Header -->
+  <header class="project-header">
+    <h1>S&P 500 Betting with Transformers</h1>
+    <p class="project-meta">Python • Pandas • TensorFlow • Finance • Trading</p>
+    <div class="project-links">
+      <a href="https://github.com/DJHoulihan/Hull_Market_Prediction" class="btn" target="_blank">View on GitHub</a>
+    </div>
+  </header>
+
+  <!-- Project Overview -->
+  <section class="project-section">
+    <h2>Overview</h2>
+    <div class="section-underline"></div>
+    <p>
+       The task of this competition is to predict the stock market returns as represented by the excess returns of the S&P 500 while also managing 
+       volatility constraints. Your work will test the Efficient Market Hypothesis and challenge common tenets of personal finance. Furthere details about 
+       the competition can be found here: https://www.kaggle.com/competitions/hull-tactical-market-prediction.
+    </p>
+  </section>
+
+  <!-- Problem Statement -->
+  <section class="project-section">
+    <h2>Problem Statement</h2>
+    <div class="section-underline"></div>
+    <p>
+        Wisdom from most personal finance experts would suggest that it's irresponsible to try and time the market. The Efficient Market Hypothesis (EMH) would agree: 
+        everything knowable is already priced in, so don't bother trying. But in the age of machine learning, is it irresponsible to not try and time the market? Is the 
+        EMH an extreme oversimplification at best and possibly just…false?
+    </p>
+    <p>
+        Predicting market returns challenges the assumptions of market efficiency. Your work could help reshape how investors and academics understand financial markets. 
+        Participants could uncover signals others overlook, develop innovative strategies, and contribute to a deeper understanding of market behavior—potentially rewriting 
+        a fundamental principle of modern finance. Most investors don't beat the S&P 500. That failure has been used for decades to prop up EMH: If even the professionals 
+        can't win, it must be impossible. This observation has long been cited as evidence for the Efficient Market Hypothesis the idea that prices already reflect all 
+        available information and no persistent edge is possible. This story is tidy, but reality is less so. Markets are noisy, messy, and full of behavioral quirks that 
+        don't vanish just because academic orthodoxy said they should. This competition asks to build a model that predicts excess returns and includes a betting strategy 
+        designed to outperform the S&P 500 while staying within a 120% volatility constraint.
+    </p>
+
+  </section>
+
+  <!-- Technical Approach -->
+  <section class="project-section">
+    <h2>Technical Approach</h2>
+    <div class="section-underline"></div>
+   
+    <h3>Model Procedure</h3>
+    <p>
+        My approach is to use a transformer encoder neural network model with an allocation head to give values between 0, representing no leverage entered into the market, 
+        and 2, representing 2x leverage in the market. This model first normalizes and embeds the input features into an embedding layer. It then applies positional encoding 
+        to provide the mechanism a sense of time ordering, which is then fed into the transformer encoder. More reading about the transformer encoder can be found here: 
+        https://arxiv.org/abs/1706.03762. The transformer outputs a context matrix \(Z\) with the same dimension as the input \(X_{input}\). Each row of Z represents a different 
+        lagged set of mixed features.
+    </p>
+    <p>
+        The final allocation head first flattens the context matrix \(Z\), creating a feature vector. A final neural network layer is applied to the feature vector using a 
+        sigmoid activation function, which outputs values between [0,1]. This is then scaled by 2 to get the allocations per day. Therefore model is trained on the actions 
+        it takes, not on its prediction of future returns. I use a custom loss function which is a modified negative sharpe ratio. The objective is to maximize the sharpe 
+        ratio by minimizing the negative sharpe loss.
+    </p>
+  </section>
+
+  <!-- Results -->
+  <section class="project-section">
+    <h2>Results & Impact</h2>
+    <p>
+        During training, 20 percent of the training set was used for validation. After training, the training sharpe ratio is 0.026 while the validation sharpe ratio is 1.85. 
+        This could be that the validation set is small, which allows the model to overachieve.
+    </p>
+    <h3>Training Dataset</h3>
+    <div class="section-underline"></div>
+    <div class="project-image">
+      <img src="/assets/images/Trainloss.png" style="width: 800px; height: auto;" alt="Kuramoto Model fit to market indexes.">
+      <p class="image-caption"><strong>Figure 1:</strong>  The distribution of allocations for the train dataset as well as the training and validation loss values.</p>
+    </div>
+    <div class="project-image">
+      <img src="/assets/images/traincumreturns.png" style="width: 500px; height: auto;" alt="GSF for 120 SN">
+      <p class="image-caption"><strong>Figure 2:</strong> The order parameter that measures general synchronization among all the indexes over time. </p>
+    </div>
+    <p>
+        I used the model to produce allocations for the entire training dataset. The resulting sharpe ratio was ~0.03, which is out-performed by the market (if each allocation 
+        was 1) with a sharpe of 0.09. The distribution of allocations, the training and validation loss plot, and the distribution of returns can be seen in Figure 1.
+        The cumulative excess returns of both the model's strategy and the S&P 500 are shown in Figure 2.
+    </p>
+    <h3>Test Dataset</h3>
+
+    <div class="section-underline"></div>
+    <div class="project-image">
+      <img src="/assets/images/TestDist.png" style="width: 800px; height: auto;" alt="Kuramoto Model fit to market indexes.">
+      <p class="image-caption"><strong>Figure 1:</strong> The distribution of allocations for the test dataset. </p>
+    </div>
+    <div class="project-image">
+      <img src="/assets/images/Testcumreturns.png" style="width: 500px; height: auto;" alt="GSF for 120 SN">
+      <p class="image-caption"><strong>Figure 2:</strong> The resulting test returns for both the market and the model. </p>
+    </div>
+    <p>
+        The model was then applied on the test dataset given from the competition. This dataset was evaluated by the modified sharpe ratio given by the competition, which is 
+        slightly different than the sharpe loss function I used in training. It penalizes both volatility and excessive losses. The resulting score was 1.40 for the model's 
+        strategy, which also under-performed the market with a sharpe ratio of 1.42. The distribution of allocations is shown in Figure 1 and the resulting returns is shown in Figure 2.
+    </p>
+     
+  </section>
+
+  <!-- Technologies -->
+  <section class="project-section">
+    <h2>Technologies Used</h2>
+    <div class="section-underline"></div>
+    <div class="tech-stack">
+      <span class="tech-badge">Python</span>
+      <span class="tech-badge">TensorFlow</span>
+      <span class="tech-badge">Pandas</span>
+      <span class="tech-badge">Supervised Learning</span>
+    </div>
+  </section>
+
+  <!-- Footer Navigation -->
+  <footer class="project-footer">
+    <a href="/Finance Projects/" class="btn">← Back to Finance Projects</a>
+  </footer>
+</article>
+
+<!-- Project Detail Styles -->
+<style>
+.project-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid var(--accent-primary);
+}
+
+.project-header h1 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: #ffffff !important;
+}
+
+.project-header .project-meta {
+  color: var(--accent-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.project-header .project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-section {
+  margin-bottom: 3rem;
+}
+
+.project-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.project-section h3 {
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #000000;
+}
+
+.project-section p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.project-section ul {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-section li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: #000000;
+}
+
+.project-section code {
+  background-color: rgba(184, 115, 51, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: rgba(184, 115, 51, 0.2);
+  border: 2px solid var(--accent-primary);
+  border-radius: 20px;
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.project-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(184, 115, 51, 0.3);
+}
+
+.section-underline {
+  width: 90px;
+  height: 6px;
+  background-color: var(--accent-primary);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+</style>
