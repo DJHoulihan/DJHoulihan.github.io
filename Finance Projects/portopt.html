@@ -60,6 +60,14 @@ title: RL Portfolio Optimization
       Then, those representations are sent into a Cross-Asset Attention Network (CAAN) which takes the representations of all assets as inputs to extract relationships among the assets. Lastly, the final portfolio generator takes the scalar winner score for every asset from CAAN and derives the optimal portfolio
       weights.
     </p>
+    <div class="project-image">
+      <img src="/assets/images/APflowchart.png" style="width: 500px; height: auto;" alt="GSF for 120 SN">
+      <p class="image-caption"><strong>Figure 2:</strong> The overall architecture of the portfolio generator. Taken from <a href="https://purl.stanford.edu/fy908xd8332">2</a>.</p>
+    </div>
+    <div class="project-image">
+      <img src="/assets/images/TEworkflow.png" style="width: 500px; height: auto;" alt="GSF for 120 SN">
+      <p class="image-caption"><strong>Figure 2:</strong> The architecture of the Transformer Encoder. Taken from <a href="https://purl.stanford.edu/fy908xd8332">2</a>.</p>
+    </div>
     <p>
       This architecture is embedded into a reinforcement learning framework to train the model parameters to maximize an evaluation criterion. This project uses an actor-critic 
       objective minimizing temporal difference (TD) error while maximizing advantage-weighted actions, regularized by a global Sharpe ratio bonus.
