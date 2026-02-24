@@ -15,7 +15,7 @@ title: RL Portfolio Optimization
   <!-- Project Header -->
   <header class="project-header">
     <h1>Reinforcement Learning for Portfolio Optimization</h1>
-    <p class="project-meta">Python • Pandas • TensorFlow • Finance</p>
+    <p class="project-meta">Python • Pandas • TensorFlow • Finance • Reinforcement Learning</p>
     <div class="project-links">
       <a href="https://github.com/DJHoulihan/Portfolio_Optimization" class="btn" target="_blank">View on GitHub</a>
     </div>
@@ -26,7 +26,8 @@ title: RL Portfolio Optimization
     <h2>Overview</h2>
     <div class="section-underline"></div>
     <p>
-       The task of this competition is to use an agent/critic reinforcement learning algorithm to optimize portfolio construction.  
+      This project involves optimizing the objectives of portfolio management via a deep reinforcement learning model. The algorithms involves a multi-sequence, attention-based
+      neural-network models tailored to financial data that is based off of the AlphaPortfolio model, which is outlined <a href="https://github.com/DJHoulihan/Portfolio_Optimization">here</a>.
     </p>
   </section>
 
@@ -35,19 +36,14 @@ title: RL Portfolio Optimization
     <h2>Problem Statement</h2>
     <div class="section-underline"></div>
     <p>
-        Wisdom from most personal finance experts would suggest that it's irresponsible to try and time the market. The Efficient Market Hypothesis (EMH) would agree: 
-        everything knowable is already priced in, so don't bother trying. But in the age of machine learning, is it irresponsible to not try and time the market? Is the 
-        EMH an extreme oversimplification at best and possibly just…false?
-    </p>
-    <p>
-        Predicting market returns challenges the assumptions of market efficiency. Your work could help reshape how investors and academics understand financial markets. 
-        Participants could uncover signals others overlook, develop innovative strategies, and contribute to a deeper understanding of market behavior—potentially rewriting 
-        a fundamental principle of modern finance. Most investors don't beat the S&P 500. That failure has been used for decades to prop up EMH: If even the professionals 
-        can't win, it must be impossible. This observation has long been cited as evidence for the Efficient Market Hypothesis the idea that prices already reflect all 
-        available information and no persistent edge is possible. This story is tidy, but reality is less so. Markets are noisy, messy, and full of behavioral quirks that 
-        don't vanish just because academic orthodoxy said they should. This competition asks to build a model that predicts excess returns and includes a betting strategy 
-        designed to outperform the S&P 500 while staying within a 120% volatility constraint.
-    </p>
+      Portfolio construction and management is a very important and difficult part of finance. It requires making allocation decisions under uncertainty. Given the 
+       high-dimensional, noisy, and nonlinear nature of financial and economic data, traditional methods (in machine learning especially) can have serious drawbacks.
+       
+       The task of this competition is to use an agent/critic reinforcement learning algorithm to optimize portfolio construction given a set of assets. With the complexity
+       of financial data, searching using trial-and-eror through a flexible modeling space to directly maximize a portfolio management objective can be more effective than 
+       attempting to estimate prices or returns directly and then prescribing portfolio weight based on that. Attention-based modeling can also improve capturing long-term memory and
+       nonlinearity. 
+    </p>  
 
   </section>
 
@@ -56,60 +52,28 @@ title: RL Portfolio Optimization
     <h2>Technical Approach</h2>
     <div class="section-underline"></div>
    
-    <h3>Model Procedure</h3>
+    <h3>Model Approach</h3>
     <p>
-        My approach is to use a transformer encoder neural network model with an allocation head to give values between 0, representing no leverage entered into the market, 
-        and 2, representing 2x leverage in the market. This model first normalizes and embeds the input features into an embedding layer. It then applies positional encoding 
-        to provide the mechanism a sense of time ordering, which is then fed into the transformer encoder. More reading about the transformer encoder can be found here: 
-        https://arxiv.org/abs/1706.03762. The transformer outputs a context matrix \(Z\) with the same dimension as the input \(X_{input}\). Each row of Z represents a different 
-        lagged set of mixed features.
+      Overall, the model consists of two main architectures: the portfolio generator architecture and the RL architecture. The portfolio generator architecture is 
+      taken directly from the AlphaPortfolio model, which includes using sequence representation extraction models (SREMs) to extract a representation for each asset in its 
+      state history. In this case, a transformer encoders are used as the SREMs. For more reading on transformers, one can look at my S&P 500 Betting with Transformers project.
+      Then, those representations are sent into a Cross-Asset Attention Network (CAAN) which takes the representations of all assets as inputs to extract relationships among the assets. Lastly, the final portfolio generator takes the scalar winner score for every asset from CAAN and derives the optimal portfolio
+      weights.
     </p>
     <p>
-        The final allocation head first flattens the context matrix \(Z\), creating a feature vector. A final neural network layer is applied to the feature vector using a 
-        sigmoid activation function, which outputs values between [0,1]. This is then scaled by 2 to get the allocations per day. Therefore model is trained on the actions 
-        it takes, not on its prediction of future returns. I use a custom loss function which is a modified negative sharpe ratio. The objective is to maximize the sharpe 
-        ratio by minimizing the negative sharpe loss.
+      This architecture is embedded into a reinforcement learning framework to train the model parameters to maximize an evaluation criterion. This project uses an actor-critic 
+      objective minimizing temporal difference (TD) error while maximizing advantage-weighted actions, regularized by a global Sharpe ratio bonus.
     </p>
   </section>
 
   <!-- Results -->
   <section class="project-section">
     <h2>Results & Impact</h2>
-    <p>
-        During training, 20 percent of the training set was used for validation. After training, the training sharpe ratio is 0.026 while the validation sharpe ratio is 1.85. 
-        This could be that the validation set is small, which allows the model to overachieve.
-    </p>
-    <h3>Training Dataset</h3>
     <div class="section-underline"></div>
-    <div class="project-image">
-      <img src="/assets/images/Trainloss.png" style="width: 800px; height: auto;" alt="Kuramoto Model fit to market indexes.">
-      <p class="image-caption"><strong>Figure 1:</strong>  The distribution of allocations for the train dataset as well as the training and validation loss values.</p>
-    </div>
-    <div class="project-image">
-      <img src="/assets/images/traincumreturns.png" style="width: 500px; height: auto;" alt="GSF for 120 SN">
-      <p class="image-caption"><strong>Figure 2:</strong> The order parameter that measures general synchronization among all the indexes over time. </p>
-    </div>
     <p>
-        I used the model to produce allocations for the entire training dataset. The resulting sharpe ratio was ~0.03, which is out-performed by the market (if each allocation 
-        was 1) with a sharpe of 0.09. The distribution of allocations, the training and validation loss plot, and the distribution of returns can be seen in Figure 1.
-        The cumulative excess returns of both the model's strategy and the S&P 500 are shown in Figure 2.
+        This project is still ongoing and results will be posted once completed.
     </p>
-    <h3>Test Dataset</h3>
-
-    <div class="section-underline"></div>
-    <div class="project-image">
-      <img src="/assets/images/TestDist.png" style="width: 800px; height: auto;" alt="Kuramoto Model fit to market indexes.">
-      <p class="image-caption"><strong>Figure 1:</strong> The distribution of allocations for the test dataset. </p>
-    </div>
-    <div class="project-image">
-      <img src="/assets/images/Testcumreturns.png" style="width: 500px; height: auto;" alt="GSF for 120 SN">
-      <p class="image-caption"><strong>Figure 2:</strong> The resulting test returns for both the market and the model. </p>
-    </div>
-    <p>
-        The model was then applied on the test dataset given from the competition. This dataset was evaluated by the modified sharpe ratio given by the competition, which is 
-        slightly different than the sharpe loss function I used in training. It penalizes both volatility and excessive losses. The resulting score was 1.40 for the model's 
-        strategy, which also under-performed the market with a sharpe ratio of 1.42. The distribution of allocations is shown in Figure 1 and the resulting returns is shown in Figure 2.
-    </p>
+    
      
   </section>
 
